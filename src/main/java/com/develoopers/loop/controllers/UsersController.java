@@ -2,8 +2,6 @@ package com.develoopers.loop.controllers;
 
 import com.develoopers.loop.models.Profile;
 import com.develoopers.loop.models.Users;
-import com.develoopers.loop.repositories.ProfileRepository;
-import com.develoopers.loop.repositories.UsersRepository;
 import com.develoopers.loop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -43,12 +41,14 @@ public class UsersController {
 
     @PutMapping("{id_user}")
     public Users updateUser(@PathVariable("id_user") Integer id_user,
+                            @RequestParam(required = false) String first_name,
+                            @RequestParam(required = false) String last_name,
                             @RequestParam(required = false) String username,
                             @RequestParam(required = false) String email,
                             @RequestParam(required = false) String phone,
                             @RequestParam(required = false) String password,
                             @RequestParam(required = false) Profile profile ){
-        return service.updateUser(id_user,username,email,phone,password,profile);// Solicita los datos que actualizaremos en la URL de la solicitud
+        return service.updateUser(id_user,first_name,last_name,username,email,phone,password,profile);// Solicita los datos que actualizaremos en la URL de la solicitud
 
     }//updateUser
 
